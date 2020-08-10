@@ -1,4 +1,5 @@
 # Leetcode  
+The solutions are in Java currently and a question may have more than one solution.
 ### Easy
 <pre>
 --------------------------------------------------------------------------------------

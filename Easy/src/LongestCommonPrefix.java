@@ -54,8 +54,41 @@ public class LongestCommonPrefix {
         return result;
     }
 
+    /**
+     * More optimized method that returns longest common prefix
+     * Runtime- 0ms, Memory-37.4MB
+     * Solution is Linear O(n)
+     * @param str the array of strings
+     * @return prefix the longest common prefix
+     */
+    public String longestCommonPrefix2(String[] str){
+        String prefix="";
+        if(str.length==0){
+            return prefix;
+        }
+        prefix=str[0];
+        for(int i=1;i<str.length;i++){
+            /**
+             * indexOf returns the index Of prefix in str[i].
+             * str[i] contains only one word. So, if prefix is in str[i], it will return index 0, else -1
+             * and if the prefix is not found in the beginning of the element from the list,
+             * then pop the last character from the prefix.
+             * eg: Flower, flow
+             * flow.indexOf(flower) returns -1. So decrease flower by 1
+             * flow.indexOf(flowe) returns -1. So decrease flowe by 1.
+             * flow.indexOf(flow) returns 0. While loop ends. Increment i.
+             * flight.indexOf(flow) and so on....
+             */
+            while(str[i].indexOf(prefix)!=0){
+                prefix=prefix.substring(0,prefix.length()-1);
+            }
+        }
+        return prefix;
+    }
+
     public static void main(String[] args) {
         String[] test={"flower","flow","flight"};
         System.out.println(new LongestCommonPrefix().longestCommonPrefix(test));
+        System.out.println(new LongestCommonPrefix().longestCommonPrefix2(test));
     }
 }

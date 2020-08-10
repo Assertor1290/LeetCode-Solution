@@ -86,9 +86,39 @@ public class LongestCommonPrefix {
         return prefix;
     }
 
+    /**
+     * Method works on Vertical spanning
+     * Better in best case scenario than previous method
+     * Runtime 0ms Memory 37.3MB
+     * @param str
+     * @return
+     */
+    public String longestCommonPrefix3(String[] str){
+        if(str.length==0){
+            return "";
+        }
+        //lopp through distance of first word
+        for(int i=0;i<str[0].length();i++){
+            //store first character of first word
+            char c=str[0].charAt(i);
+            //loop through remaining strings column by column
+            for(int j=1;j<str.length;j++){
+
+                //if length of other words is less than the first word
+                //or the character becomes unequal, return
+                if(i==str[j].length() || str[j].charAt(i)!=c){
+                    return str[0].substring(0,i);
+                }
+            }
+        }
+        //this will execute if length of first word is less than others
+        return str[0];
+    }
+
     public static void main(String[] args) {
         String[] test={"flower","flow","flight"};
         System.out.println(new LongestCommonPrefix().longestCommonPrefix(test));
         System.out.println(new LongestCommonPrefix().longestCommonPrefix2(test));
+        System.out.println(new LongestCommonPrefix().longestCommonPrefix3(test));
     }
 }

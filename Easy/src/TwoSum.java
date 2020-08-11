@@ -10,7 +10,7 @@ import java.util.Map;
 public class TwoSum {
     /**
      * Method 1: Brute Force O(n^2)
-     * Runtime: Memory:
+     * Runtime:61ms Memory:39.6MB
      * @param nums input array of integers
      * @param target the target sum
      * @return array of indices
@@ -28,7 +28,7 @@ public class TwoSum {
 
     /**
      * Method 2: Hash Table O(n)
-     * Runtime: Memory:
+     * Runtime:1ms Memory:39.9MB
      * @param nums input array of integers
      * @param target the target sum
      * @return array of indices

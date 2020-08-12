@@ -40,12 +40,28 @@ public class PalindromeNumber {
     }
     /**
      * Method 2 to determine if it is Palindrome
-     * Runtime: Memory
+     * It is slight improvement over Method 1. This method uses the String directly
+     * Runtime:7ms Memory:38.6MB
      * @param x the integer to check if it is palindrome
      * @return true if palindrome  or false if not a palindrome
      */
     public boolean isPalindrome2(int x){
+        if(x<0)
+            return false;
 
+        int flag=0;
+        String temp=Integer.toString(x);
+        //i starts from first index, j starts from last index
+        for(int i=0,j=temp.length()-1;i<temp.length()/2;i++,j--){
+            if(temp.charAt(i)!=temp.charAt(j)){
+                flag=-1;
+                break;
+            }
+        }
+        if(flag == -1)
+            return false;
+        else
+            return true;
     }
     /**
      * Method 3 to determine if it is Palindrome

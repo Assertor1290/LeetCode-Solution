@@ -70,7 +70,7 @@ public class PalindromeNumber {
      * However, if the reversed number is larger than int.MAX, we will hit integer overflow problem.
      * To avoid the overflow issue of the reverted number we revert only half of the number
      * This method does not use Integer to String conversion
-     * Runtime: Memory
+     * Runtime:7ms Memory:38.7MB
      * @param x the integer to check if it is palindrome
      * @return true if palindrome  or false if not a palindrome
      */
@@ -91,10 +91,34 @@ public class PalindromeNumber {
         }
         return x==rev || x==rev/10;
     }
+
+    /**
+     * Method 4 to determine if it is Palindrome
+     * Slightly more optimized than method 3
+     * Runtime:6ms Memory:38.9MB
+     * @param x the integer to check if it is palindrome
+     * @return true if palindrome  or false if not a palindrome
+     */
+    public boolean isPalindrome4(int x){
+        if(x<0)
+            return false;
+
+        int rev=0;
+        int y=x;
+        while(y!=0)
+        {
+            rev=rev*10+y%10;
+            y=y/10;
+        }
+
+        return rev==x;
+    }
+
     public static void main(String[] args) {
-        int a=123;
+        int a=1;
         System.out.println(new PalindromeNumber().isPalindrome(a));
         System.out.println(new PalindromeNumber().isPalindrome2(a));
         System.out.println(new PalindromeNumber().isPalindrome3(a));
+        System.out.println(new PalindromeNumber().isPalindrome4(a));
     }
 }

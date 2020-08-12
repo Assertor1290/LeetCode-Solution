@@ -65,12 +65,31 @@ public class PalindromeNumber {
     }
     /**
      * Method 3 to determine if it is Palindrome
+     * Approach: Revert half number: Idea is to revert the number itself, and then compare the number
+     * with original number, if they are the same, then the number is a palindrome.
+     * However, if the reversed number is larger than int.MAX, we will hit integer overflow problem.
+     * To avoid the overflow issue of the reverted number we revert only half of the number
+     * This method does not use Integer to String conversion
      * Runtime: Memory
      * @param x the integer to check if it is palindrome
      * @return true if palindrome  or false if not a palindrome
      */
     public boolean isPalindrome3(int x){
+        /*
+         Also if the last digit of the number is 0, in order to be a palindrome,
+         the first digit of the number also needs to be 0, which is not possible
+         Only 0 satisfy this property.
+         */
+        if(x<0 || (x%10==0 && x!=0))
+            return false;
 
+        int rev=0;
+        //while original number is greater than reversed number
+        while(x>rev){
+            rev=rev*10+x%10;
+            x=x/10;
+        }
+        return x==rev || x==rev/10;
     }
     public static void main(String[] args) {
         int a=123;

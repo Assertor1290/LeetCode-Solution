@@ -9,11 +9,14 @@ public class PalindromeNumber {
     /**
      * Method 1 to determine if it is Palindrome
      * This method converts the Integer to String
-     * Runtime: Memory
+     * Runtime:8ms Memory:39.8MB
      * @param x the integer to check if it is palindrome
      * @return true if palindrome  or false if not a palindrome
      */
     public boolean isPalindrome(int x){
+        if(x<0)
+            return false;
+
         int flag=0;
         String temp=Integer.toString(x);
         int[] pal=new int[temp.length()];

@@ -65,6 +65,7 @@ public class MergeTwoLinkedList {
 
     /**
      * Recursive method to merge two linked list
+     * Runtime:0ms Memory: 39.3MB
      * @param l1 first Linked List
      * @param l2 second Linked List
      * @return sorted List

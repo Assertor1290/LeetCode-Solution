@@ -11,7 +11,7 @@ import java.util.Stack;
 public class ValidParentheses {
     /**
      * Method to determine if the paranthesis are valid or not.
-     * Runtime:1ms, Memory:
+     * Runtime:1ms, Memory:37.5MB
      * @param s The string containing the parenthesis
      * @return true if expression is valid else false
      */

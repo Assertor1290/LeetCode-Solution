@@ -5,6 +5,7 @@
 public class MergeTwoLinkedList {
     /**
      * Iterative method to merge two sorted Linked List.
+     * Runtime:0ms Memory:39MB
      * @param l1 first Linked List
      * @param l2 second Linked List
      * @return sorted List
@@ -60,6 +61,17 @@ public class MergeTwoLinkedList {
             last.next=l1;
         }
         return head.next;
+    }
+
+    /**
+     * Recursive method to merge two linked list
+     * @param l1 first Linked List
+     * @param l2 second Linked List
+     * @return sorted List
+     */
+    public ListNode mergeTwoLists2(ListNode l1,ListNode l2){
+        if(l1==null) return l2;
+        if()
     }
     public static void main(String[] args) {
         /**

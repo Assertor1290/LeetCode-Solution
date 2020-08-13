@@ -71,7 +71,15 @@ public class MergeTwoLinkedList {
      */
     public ListNode mergeTwoLists2(ListNode l1,ListNode l2){
         if(l1==null) return l2;
-        if()
+        if(l2==null) return l1;
+        if(l1.val<l2.val){
+            l1.next=mergeTwoLists2(l1.next,l2);
+            return l1;
+        }
+        else{
+            l2.next = mergeTwoLists2(l1, l2.next);
+            return l2;
+        }
     }
     public static void main(String[] args) {
         /**
@@ -106,6 +114,14 @@ public class MergeTwoLinkedList {
             System.out.print(newHead.val);
             newHead = newHead.next;
         }
+        System.out.println();
+
+//        Recursive part
+//        ListNode newHead2 = new MergeTwoLinkedList().mergeTwoLists2(t1,s1);
+//        while (newHead2 != null) {
+//            System.out.print(newHead2.val);
+//            newHead2 = newHead2.next;
+//        }
     }
 }
 

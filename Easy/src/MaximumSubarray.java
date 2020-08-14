@@ -66,6 +66,7 @@ public class MaximumSubarray{
 
     /**
      * O(n^2) solution
+     * Runtime: 131ms Memory:39.3MB
      * Problem in above code:
      * Consider the point where we are calculating the sum:
      *      [-2]                            =-2
@@ -101,7 +102,7 @@ public class MaximumSubarray{
         }
         return max_sum;
     }
-    
+
     public int maxSubArray2(int[] nums) {
 
     }

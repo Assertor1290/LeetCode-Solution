@@ -11,6 +11,7 @@
 public class CountAndSay {
     /**
      * Method to return next number in sequence
+     * Runtime:0ms, Memory:36.6MB
      * @param n the term whose sequence we have to return
      * @return the sequence
      */

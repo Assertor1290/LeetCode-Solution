@@ -7,6 +7,8 @@ public class MaximumSubarray{
      *      -2  1  -3  4  -1  2  1  -5  4
      *      left=-2
      *      right=-2 Now, we keep left fixed and move right to end of array.
+     *      When the right hits the end, we close the left and move it one index forward
+     *      and bring right back to left.
      *
      *      That is, we construct the following subarrays:-
      *      [-2]

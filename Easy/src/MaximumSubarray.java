@@ -107,6 +107,10 @@ public class MaximumSubarray{
      * O(n) O(1)
      * Runtime:1ms, Memory:39.4MB
      * Kadane's Algorithm/ DP
+     * Kadane's Algorithm is an O(n) algorithm for finding the maximum
+     * contiguous subsequence in a one-dimensional sequence.
+     * The algorithm keeps track of the tentative maximum subsequence in (maxSum, maxStartIndex, maxEndIndex).
+     * It accumulates a partial sum in currentMaxSum and updates the optimal range when this partial sum becomes larger than maxSum.
      * How to turn it into Linear Time?
      *
      * We are inspecting the item at index i.
@@ -152,10 +156,91 @@ public class MaximumSubarray{
         }
         return max_sum;
     }
-    public int maxSubArray3(int[] nums) {
 
+    /**
+     * O(NlogN)
+     * Runtime:2ms  Memory:39.2MB
+     * Divide and Conquer
+     * There are three possibilities for any subarray:
+     * 1)Subaaray lies completely in left side
+     * 2)Subarray lies completely in right half
+     * 3)Subarray crosses the half i.e( some part in left half sand some part oin right half)
+     *
+     * Go towards left from center and find the best/max sum and note its position
+     * Similarly, go to right from center and find best/max sum and note its position
+     * Then add those sums: This is the crossum
+     *
+     * Now compare the values of leftsum, rightsum, crosssum
+     * Algo:
+     *
+     *      Max Subaarray(A,p,r)
+     *
+     *      if p==r  return A[p]
+     *      q=(p+r)/2  OR p+(r-p)/2
+     *      L=Max Subarray(A,p,q-1)
+     *      R=Max Subarray(A,q+1,r)
+     *      C=Max Crossing Subarray(A,p,q,r)
+     *      return Max(L,R,C)
+     *
+     *   eg:                [-2  -5  6  -2 | -3  1  5  -6]
+     *                           /                \
+     *                          /                  \
+     *                  [-2  -5  6  -2]       [-3  1  5  -6]
+     * max(Lss, Rss, Css)  > /    \                 /   \
+     *       = -2         ( /      \               /     \
+     *                   CSS -7
+     *                  [-2  -5]  [6  -2]      [-3  1]  [5  -6]
+     *        Lss -2  > /   \RSS -5/   \         /  \    /  \
+     *               ( /     \    /     \       /    \  /    \
+     *                -2    -5   6      -2     -3    1  5    -6
+     *
+     * @param nums input array
+     * @return the maximum sum
+     */
+    public int maxSubArray3(int[] nums) {
+        int n = nums.length;
+        return maxSubArray3(nums, 0, n - 1);
+    }
+
+    private int maxSubArray3(int[] nums, int lo, int hi) {
+        if (lo == hi) { // base case: one number
+            return nums[lo];
+        }
+        // divide
+        int mid = lo + (hi - lo) / 2;
+
+        // conquer
+        int leftSum = maxSubArray3(nums, lo, mid);
+        int rightSum = maxSubArray3(nums, mid + 1, hi);
+
+        // combine
+        int crossSum = crossSum(nums, lo, hi);
+        return Math.max(crossSum, Math.max(leftSum, rightSum));
+    }
+
+    // invariant: lo < hi (left part and right part both have at least 1 element
+    private int crossSum(int[] nums, int lo, int hi) {
+
+        int mid = lo + (hi - lo) / 2;
+        //left
+        int leftSum = 0, leftMax = Integer.MIN_VALUE; // the invariant means that           leftMax and rightMax will be updated
+        for (int i = mid; i >= lo; --i) {
+            leftSum += nums[i];
+            leftMax = Math.max(leftMax, leftSum);
+        }
+        // right
+        int rightSum = 0, rightMax = Integer.MIN_VALUE;
+        for (int i = mid + 1; i <= hi; ++i) {
+            rightSum += nums[i];
+            rightMax = Math.max(rightMax, rightSum);
+        }
+        return leftMax + rightMax;
     }
     public static void main(String[] args) {
-
+        int[] nums=new int[]{-2,1,-3,4,-1,2,1,-5,4};
+        System.out.println(new MaximumSubarray().maxSubArray(nums));
+        System.out.println(new MaximumSubarray().maxSubArray1(nums));
+        System.out.println(new MaximumSubarray().maxSubArray2(nums));
+        System.out.println(new MaximumSubarray().maxSubArray3(nums));
     }
 }

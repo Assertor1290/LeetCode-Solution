@@ -25,8 +25,22 @@ public class HammingDistance {
         }
         return count;
     }
+
+    /**
+     * Runtime:0ms, Memory:38.1MB
+     * The java.lang.Integer.bitCount() method returns the number of one-bits in the two's complement
+     * binary representation of the specified int value i. This is sometimes referred to as the population count.
+     * @param x first number
+     * @param y second number
+     * @return hammingDistance
+     */
+    public int hammingDistance2(int x,int y){
+        int temp=x^y;
+        return Integer.bitCount(temp);
+    }
     public static void main(String[] args) {
         int a=1,b=4;
         System.out.println(new HammingDistance().hammingDistance(a,b));
+        System.out.println(new HammingDistance().hammingDistance2(a,b));
     }
 }

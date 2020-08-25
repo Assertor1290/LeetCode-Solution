@@ -38,7 +38,29 @@ public class FizzBuzz {
         }
         return list;
     }
+
+    /**
+     * Runtime:1ms, Memory:40.3MB
+     * @param n input integer
+     * @return list of String
+     */
+    public List<String> fizzBuzz2(int n) {
+        List<String>s=new ArrayList<String>();
+        for(int i=1;i<=n;i++)
+        {
+            if(i%3==0 && i%5==0)
+                s.add("FizzBuzz");
+            else if(i%3==0)
+                s.add("Fizz");
+            else if(i%5==0)
+                s.add("Buzz");
+            else
+                s.add(Integer.toString(i));
+        }
+        return s;
+    }
     public static void main(String[] args) {
         System.out.println(new FizzBuzz().fizzBuzz(15));
+        System.out.println(new FizzBuzz().fizzBuzz2(15));
     }
 }

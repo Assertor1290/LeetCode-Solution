@@ -85,8 +85,38 @@ public class ThirdMaximumNumber {
         }
         return (max3==null)?max1:max3;
     }
+
+    /**
+     * Runtime:0ms, Memory:39.7MB
+     * @param a
+     * @return
+     */
+    public int thirdMax4(int[] a) {
+        int n = a.length;
+        long mx1=Long.MIN_VALUE,mx2=Long.MIN_VALUE,mx3=Long.MIN_VALUE;
+        for(int i=0;i<n;i++){
+            if(a[i]>mx1){
+                mx3=mx2;
+                mx2=mx1;
+                mx1=a[i];
+            }
+            else if(a[i]>mx2 && a[i]!=mx1){
+                mx3=mx2;
+                mx2=a[i];
+            }
+            else if(a[i]>mx3 && a[i]!=mx2 && a[i]!=mx1){
+                mx3=a[i];
+            }
+        }
+        if(mx3==Long.MIN_VALUE) return (int)mx1;
+        return (int)mx3;
+    }
     public static void main(String[] args) {
         int[] arr=new int[]{1,2};
         System.out.println(new ThirdMaximumNumber().thirdMax(arr));
+        System.out.println(new ThirdMaximumNumber().thirdMax2(arr));
+        System.out.println(new ThirdMaximumNumber().thirdMax3(arr));
+        System.out.println(new ThirdMaximumNumber().thirdMax4(arr));
+
     }
 }

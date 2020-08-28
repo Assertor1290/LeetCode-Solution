@@ -11,10 +11,10 @@ public class FirstUniqueCharacterInString {
     /**
      * Runtime:22ms, Memory:40MB
      * Use HashMap to store characters and their count
-     * @param s
-     * @return
+     * @param s input string
+     * @return index of first unique character
      */
-    public int firstUniqueCharacter2(String s) {
+    public int firstUniqueCharacter3(String s) {
         HashMap<Character, Integer> count = new HashMap<Character, Integer>();
         int n = s.length();
 
@@ -39,6 +39,20 @@ public class FirstUniqueCharacterInString {
         }
         return -1;
     }
+
+    /**
+     * Runtime:20ms Memory:40.2MB
+     * @param s input string
+     * @return index of first unique character
+     */
+    public int firstUniqueCharacter2(String s) {
+        char[] a=s.toCharArray();
+        for (char c : a)
+            if(s.indexOf(c) == s.lastIndexOf(c))
+                return s.indexOf(c);
+        return -1;
+    }
+
     /**
      * Runtime:1ms, Memory:40.4MB
      * @param s input string

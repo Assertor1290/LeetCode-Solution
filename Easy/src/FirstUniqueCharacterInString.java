@@ -27,6 +27,8 @@ public class FirstUniqueCharacterInString {
 
             //So for first time since charcter is not there it will return 0 + 1
             //next time it will be previous value +1
+
+            //also, HashMap overwrites previous key if it exists
             count.put(c, count.getOrDefault(c, 0) + 1);
         }
 

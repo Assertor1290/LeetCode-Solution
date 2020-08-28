@@ -54,6 +54,25 @@ public class FirstUniqueCharacterInString {
     }
 
     /**
+     * Runtime:5ms, Memory:40.1MB
+     * @param s input string
+     * @return index of first unique character
+     */
+    public int firstUniqueCharacter1(String s) {
+        int[] freq = new int[26];
+        char a[]=s.toCharArray();
+        for(char c : a ){
+            //eg if character is a, then freq[97-97]+=1 i.e freq[0]+=1;
+            //if character is c, then freq[99-97]+=1 i.e freq[2]+=1;
+            freq[c-'a']++;
+        }
+        for(int i = 0; i<s.length(); i++) {
+            if(freq[s.charAt(i)-'a']==1) return i;
+        }
+        return -1;
+    }
+
+    /**
      * Runtime:1ms, Memory:40.4MB
      * @param s input string
      * @return index of first unique character
@@ -77,6 +96,8 @@ public class FirstUniqueCharacterInString {
     public static void main(String[] args) {
         String s="loveleetcode";
         System.out.println(new FirstUniqueCharacterInString().firstUniqueCharacter(s));
+        System.out.println(new FirstUniqueCharacterInString().firstUniqueCharacter1(s));
         System.out.println(new FirstUniqueCharacterInString().firstUniqueCharacter2(s));
+        System.out.println(new FirstUniqueCharacterInString().firstUniqueCharacter3(s));
     }
 }

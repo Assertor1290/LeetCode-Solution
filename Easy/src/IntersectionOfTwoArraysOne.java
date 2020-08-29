@@ -1,5 +1,4 @@
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -134,21 +133,33 @@ public class IntersectionOfTwoArraysOne {
     }
 
     /**
-     * Runtime: 7ms, Memory:40.1MB
-     * O(max(n, m)) time, O(n + m) space
-     * We first convert the array to stream using stream() method and
-     * use collect() method with toSet() as parameter to convert the stream to a set.
+     * Runtime: 2ms, Memory:39.4MB
+     *Time complexity : O(n+m), where n and m are arrays lengths.
+     * O(n) time is used to convert nums1 into set, O(m) time is used to convert nums2,
+     * and contains/in operations are O(1) in the average case.
+     *
+     * Space complexity : O(m+n) in the worst case when all elements in the arrays are different.
      * @param nums1 first input array
      * @param nums2 second input array
      * @return intersected array
      */
     public int[] intersection4(int[] nums1, int[] nums2) {
-        Set<Integer> a = new HashSet<>(Arrays.stream(nums1).boxed().collect(Collectors.toList()));
-        Set<Integer> b = new HashSet<>(Arrays.stream(nums2).boxed().collect(Collectors.toList()));
-        //The retainAll() method of java.util.HashSet class is used to retain from
-        //this set all of its elements that are contained in the specified collection.
-        a.retainAll(b);
-        return a.stream().mapToInt(Integer::intValue).toArray();
+        HashSet<Integer> set1 = new HashSet<Integer>();
+        for (Integer n : nums1) set1.add(n);
+        HashSet<Integer> set2 = new HashSet<Integer>();
+        for (Integer n : nums2) set2.add(n);
+
+        if (set1.size() < set2.size()) return set_intersection(set1, set2);
+        else return set_intersection(set2, set1);
+    }
+
+    public int[] set_intersection(HashSet<Integer> set1, HashSet<Integer> set2) {
+        int [] output = new int[set1.size()];
+        int idx = 0;
+        for (Integer s : set1)
+            if (set2.contains(s)) output[idx++] = s;
+
+        return Arrays.copyOf(output, idx);
     }
     public static void main(String[] args) {
         int[] nums1=new int[]{4,9,5};

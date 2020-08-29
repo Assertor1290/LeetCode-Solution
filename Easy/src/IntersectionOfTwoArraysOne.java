@@ -134,7 +134,7 @@ public class IntersectionOfTwoArraysOne {
 
     /**
      * Runtime: 2ms, Memory:39.4MB
-     *Time complexity : O(n+m), where n and m are arrays lengths.
+     * Time complexity : O(n+m), where n and m are arrays lengths.
      * O(n) time is used to convert nums1 into set, O(m) time is used to convert nums2,
      * and contains/in operations are O(1) in the average case.
      *

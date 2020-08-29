@@ -1,7 +1,5 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -106,7 +104,7 @@ public class IntersectionOfTwoArraysOne {
 
     /**
      * Runtime: 2ms, Memory:39.8MB
-     * This makes use of fa
+     * This makes use of fact that order doesn't matter
      * @param nums1 first input array
      * @param nums2 second input array
      * @return intersected array
@@ -134,11 +132,30 @@ public class IntersectionOfTwoArraysOne {
         }
         return ans;
     }
+
+    /**
+     * Runtime: 7ms, Memory:40.1MB
+     * O(max(n, m)) time, O(n + m) space
+     * We first convert the array to stream using stream() method and
+     * use collect() method with toSet() as parameter to convert the stream to a set.
+     * @param nums1 first input array
+     * @param nums2 second input array
+     * @return intersected array
+     */
+    public int[] intersection4(int[] nums1, int[] nums2) {
+        Set<Integer> a = new HashSet<>(Arrays.stream(nums1).boxed().collect(Collectors.toList()));
+        Set<Integer> b = new HashSet<>(Arrays.stream(nums2).boxed().collect(Collectors.toList()));
+        //The retainAll() method of java.util.HashSet class is used to retain from
+        //this set all of its elements that are contained in the specified collection.
+        a.retainAll(b);
+        return a.stream().mapToInt(Integer::intValue).toArray();
+    }
     public static void main(String[] args) {
         int[] nums1=new int[]{4,9,5};
         int[] nums2=new int[]{9,4,9,8,4};
         //System.out.println(Arrays.toString(new IntersectionOfTwoArraysOne().intersection(nums1, nums2)));
         //System.out.println(Arrays.toString(new IntersectionOfTwoArraysOne().intersection2(nums1, nums2)));
-        System.out.println(Arrays.toString(new IntersectionOfTwoArraysOne().intersection3(nums1, nums2)));
+        //System.out.println(Arrays.toString(new IntersectionOfTwoArraysOne().intersection3(nums1, nums2)));
+        System.out.println(Arrays.toString(new IntersectionOfTwoArraysOne().intersection4(nums1, nums2)));
     }
 }

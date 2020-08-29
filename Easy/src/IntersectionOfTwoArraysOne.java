@@ -1,4 +1,7 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * <p>
@@ -101,7 +104,41 @@ public class IntersectionOfTwoArraysOne {
         return result;
     }
 
-    public static void main(String[] args) {
+    /**
+     * Runtime: 2ms, Memory:39.8MB
+     * This makes use of fa
+     * @param nums1 first input array
+     * @param nums2 second input array
+     * @return intersected array
+     */
+    public int[] intersection3(int[] nums1, int[] nums2) {
 
+        List<Integer> li = new ArrayList<>();
+        HashMap<Integer,Integer> map = new HashMap<>();
+        for(int i=0;i<nums1.length;i++)
+        {
+            map.put(nums1[i],0);
+        }
+        for(int j=0;j<nums2.length;j++)
+        {
+            if(map.containsKey(nums2[j]))
+            {
+                li.add(nums2[j]);
+                map.remove(nums2[j]);
+            }
+        }
+        int ans[]=new int[li.size()];
+        for(int i=0;i<ans.length;i++)
+        {
+            ans[i]=li.get(i);
+        }
+        return ans;
+    }
+    public static void main(String[] args) {
+        int[] nums1=new int[]{4,9,5};
+        int[] nums2=new int[]{9,4,9,8,4};
+        System.out.println(Arrays.toString(new IntersectionOfTwoArraysOne().intersection(nums1, nums2)));
+        System.out.println(Arrays.toString(new IntersectionOfTwoArraysOne().intersection2(nums1, nums2)));
+        System.out.println(Arrays.toString(new IntersectionOfTwoArraysOne().intersection3(nums1, nums2)));
     }
 }

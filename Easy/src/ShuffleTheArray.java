@@ -110,7 +110,11 @@ public class ShuffleTheArray {
      * Increment j by 1 to get the numbers for the next two positions nums[i] and nums[i + 1]
      * How do we get the two numbers out of nums[j]?
      *
-     * To get the first number we will Bitwise AND nums[j] with 1023. We use 1023 because the largest possible number is 1000 which uses 10 bits. 10 bits of all 1s is 1111111111 which is the binary representation of 1023. Bitwise AND with 1023 will cancel out any number after the first 10 bits and we'll be left with the first number only.
+     * To get the first number we will Bitwise AND nums[j] with 1023. We use 1023 because
+     * the largest possible number is 1000 which uses 10 bits.
+     * 10 bits of all 1s is 1111111111 which is the binary representation of 1023.
+     * Bitwise AND with 1023 will cancel out any number after the first 10 bits and
+     * we'll be left with the first number only.
      * const num1 = nums[j] & 1023
      * To get the second number we right shift the number back over 10 places.
      * const num2 = nums[j] >> 10
@@ -126,7 +130,7 @@ public class ShuffleTheArray {
             nums[j] |= nums[i];
             i--;
         }
-
+        
         i = 0;
         for (int j = n; j < nums.length; j++) {
             int num1 = nums[j] & 1023;

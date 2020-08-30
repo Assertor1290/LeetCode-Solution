@@ -12,6 +12,9 @@ public class PowerOfThree {
      * n = b^x
      * n = b * b * b.... * b
      *
+     * Time complexity : O(log_b(n)). In our case that is O(log_3(n))
+     * The number of divisions is given by that logarithm.
+     * Space complexity : O(1)
      * @param n input number
      * @return true or false
      */

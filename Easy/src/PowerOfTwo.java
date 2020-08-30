@@ -21,6 +21,7 @@ public class PowerOfTwo {
     }
     /**
      * Runtime:1ms, Memory:36.5MB
+     * The idea is that a power of two in binary form has only one "1".
      * @param n input integer
      * @return true or false
      */

@@ -34,6 +34,7 @@ public class MoveZeroes {
         //fill remaining elements with 0
         for (int i = 0; i < cntZeroes; i++) {
             arr[j]=0;
+            j++;
         }
 
         //Now, we have to modify original array, hence

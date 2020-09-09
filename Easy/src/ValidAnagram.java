@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.HashMap;
 
 /**
  * Given two strings s and t , write a function to determine if t is an anagram of s.
@@ -56,8 +57,37 @@ public class ValidAnagram {
         return Arrays.equals(a,b);
     }
 
+    /**
+     * For Follow Up question
+     * Runtime:17ms, Memory:39.7MB
+     * @param s first input string
+     * @param t second input string
+     * @return true if it is anagram, else false
+     */
+    public boolean isAnagram3(String s, String t){
+        HashMap<Character,Integer> smap=new HashMap<>();
+        int sl=s.length();
+        int tl=t.length();
+        if(sl!=tl){return false;}
+        for(int i=0;i<sl;i++){
+            smap.put(s.charAt(i),smap.getOrDefault(s.charAt(i),0)+1);
+            smap.put(t.charAt(i),smap.getOrDefault(t.charAt(i),0)-1);
+        }
+        //keySet() method in Java is used to create a set out of the key
+        // elements contained in the hash map. I
+        for(char c:smap.keySet()){
+            //The get() method of Map interface in Java is used to retrieve or
+            //fetch the value mapped by a particular key mentioned in the parameter.
+            if(smap.get(c)!=0){return false;}
+        }
+
+        return true;
+    }
+
     public static void main(String[] args) {
         String s="anagram",t="nagaram";
         System.out.println(new ValidAnagram().isAnagram(s,t));
+        System.out.println(new ValidAnagram().isAnagram2(s,t));
+        System.out.println(new ValidAnagram().isAnagram3(s,t));
     }
 }

@@ -78,8 +78,10 @@ public class SingleNumber {
         for(int i:nums){
             if(!set.contains(i)){
                 set.add(i);
+                //to calculate (a+b+c)
                 uniqueSum+=i;
             }
+            //(a+a+b+b+c)
             totalSum+=i;
         }
         return 2*uniqueSum - totalSum;

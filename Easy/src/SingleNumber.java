@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -24,7 +25,7 @@ public class SingleNumber {
      * @param nums input array
      * @return unique number
      */
-    public int singleNumber3(int[] nums){
+    public int singleNumber1(int[] nums){
         List<Integer> list=new ArrayList<>();
         for(int i=0;i<nums.length;i++){
             //if list does not contain the item add it to list
@@ -36,6 +37,30 @@ public class SingleNumber {
         }
         //return the only element present in list i.e. unique element
         return list.get(0);
+    }
+
+    /**
+     * Time complexity : O(n*1)=O(n). Time complexity of for loop is O(n)
+     * Time complexity of hash table operation pop is O(1).
+     * Space complexity : O(n)
+     * The space required by hash table is equal to the number of elements in nums.
+     * Runtime:7ms, Memory:40.2MB
+     * @param nums input array
+     * @return unique number
+     */
+    public int singleNumber2(int[] nums){
+        HashMap<Integer,Integer> map=new HashMap<>();
+        for(int i:nums){
+            //Iterate through elements and set up key/value pair
+            //We are counting the number of occurrences of each number
+            map.put(i,map.getOrDefault(i,0)+1);
+        }
+        for(int i:nums){
+            //if count of a number is 1, then return it
+            if(map.get(i)==1)
+                return i;
+        }
+        return 0;
     }
     /**
      * If we take XOR of zero and some bit, it will return that bit
@@ -58,6 +83,7 @@ public class SingleNumber {
     }
     public static void main(String[] args) {
         int[] arr=new int[]{2,2,1,1,5};
+        System.out.println(new SingleNumber().singleNumber3(arr));
         System.out.println(new SingleNumber().singleNumber4(arr));
     }
 }

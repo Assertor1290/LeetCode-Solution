@@ -53,6 +53,10 @@ public class FirstBadVersion {
         }
         return left;
     }
+    //some random code
+    public boolean isBadVersion(int n){
+        return false;
+    }
     public static void main(String[] args) {
         //No code here as isBadVersion is an API, and
         //no information about the function is provided

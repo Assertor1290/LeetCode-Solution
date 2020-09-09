@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * <p>
@@ -62,6 +60,30 @@ public class SingleNumber {
         }
         return 0;
     }
+
+    /**
+     * 2∗(a+b+c)−(a+a+b+b+c)=c
+     * Time complexity : O(n+n)=O(n). sum will call next to iterate through nums.
+     * We can see it as sum(list(i, for i in nums)) which means the time complexity
+     * is O(n) because of the number of elements(nn) in nums.
+     * Space complexity : O(n+n)=O(n). Set needs space for the elements in nums
+     * Runtime:4ms Space:39.6MB
+     * @param nums input array
+     * @return unique number
+     */
+    public int singleNumber3(int[] nums){
+        int totalSum=0,uniqueSum=0;
+        Set<Integer> set=new HashSet<>();
+
+        for(int i:nums){
+            if(!set.contains(i)){
+                set.add(i);
+                uniqueSum+=i;
+            }
+            totalSum+=i;
+        }
+        return 2*uniqueSum - totalSum;
+    }
     /**
      * If we take XOR of zero and some bit, it will return that bit
      * a ⊕ 0 = a
@@ -83,6 +105,8 @@ public class SingleNumber {
     }
     public static void main(String[] args) {
         int[] arr=new int[]{2,2,1,1,5};
+        System.out.println(new SingleNumber().singleNumber1(arr));
+        System.out.println(new SingleNumber().singleNumber2(arr));
         System.out.println(new SingleNumber().singleNumber3(arr));
         System.out.println(new SingleNumber().singleNumber4(arr));
     }

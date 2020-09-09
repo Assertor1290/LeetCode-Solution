@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * <p>
  * Given a non-empty array of integers, every element appears twice except for one.
@@ -9,12 +12,30 @@
  */
 public class SingleNumber {
     /**
-     *
+     * List Operation
+     * Iterate over all the elements in nums
+     * If some number in nums is new to array, append it
+     * If some number is already in the array, remove it
+     * Time:O(n^2): We iterate through nums, taking O(n) time.
+     * We search the whole list(contains method) to find whether there is duplicate number,
+     * taking O(n) time.
+     * Space:O(n)
+     * Runtime:584ms, Memory:39.3MB
      * @param nums input array
      * @return unique number
      */
     public int singleNumber3(int[] nums){
-
+        List<Integer> list=new ArrayList<>();
+        for(int i=0;i<nums.length;i++){
+            //if list does not contain the item add it to list
+            //else remove it from list
+            if(!list.contains(nums[i]))
+                list.add(nums[i]);
+            else
+                list.remove(new Integer(nums[i]));
+        }
+        //return the only element present in list i.e. unique element
+        return list.get(0);
     }
     /**
      * If we take XOR of zero and some bit, it will return that bit

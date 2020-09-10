@@ -42,6 +42,60 @@ public class AddTwoNumbers {
         }
         return l3.next;
     }
+    /**
+     * Time:1ms Space:39.9MB
+
+     * @param l1 ListNode pointer to first List
+     * @param l2 ListNode pointer to second List
+     * @return list which represents sum of two lists
+     */
+    public ListNode addTwoNumbers2(ListNode l1, ListNode l2) {
+        ListNode head = new ListNode(0);
+        ListNode current = head;
+        boolean carry = false;
+
+        while(l1!=null||l2!=null){
+            int sum=0;
+
+            //If l1 is null, only proceed l2
+            if(l1==null){
+                sum=l2.val;
+                l2=l2.next;
+            }
+            //If l2 is null, only proceed l1
+            else if(l2==null){
+                sum=l1.val;
+                l1=l1.next;
+            }
+            //If l1,l2 not null, proceed both
+            else{
+                sum=l1.val+l2.val;
+                l1=l1.next;
+                l2=l2.next;
+            }
+
+            //If l1,l2 not null, proceed both
+            if(carry)
+                sum++;
+
+            //check overflow
+            if(sum>=10){
+                sum=sum-10;
+                carry=true;
+            }
+            else
+                carry=false;
+
+            current.next=new ListNode(sum);
+            current=current.next;
+        }
+
+        //check last carry
+        if(carry)
+            current.next=new ListNode(1);
+
+        return head.next;
+    }
     public static void main(String[] args) {
     }
 }

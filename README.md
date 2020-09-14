@@ -34,6 +34,6 @@ The solutions are in Java currently and a question may have more than one soluti
 |  412  |  <a href="https://leetcode.com/problems/fizz-buzz/">Fizz Buzz</a>                                         |         <a href="https://github.com/Assertor1290/LeetCode-Solution/blob/master/Easy/src/FizzBuzz.java">Java</a>          |
 |  414  |  <a href="https://leetcode.com/problems/third-maximum-number/">Third Maximum Number</a>                              |         <a href="https://github.com/Assertor1290/LeetCode-Solution/blob/master/Easy/src/ThirdMaximumNumber.java">Java</a>          |
 |  461  |  <a href="https://leetcode.com/problems/hamming-distance/">Hamming Distance</a>                                  |         <a href="https://github.com/Assertor1290/LeetCode-Solution/blob/master/Easy/src/HammingDistance.java">Java</a>          |
-|  461  |  <a href="https://leetcode.com/problems/shuffle-the-array/">Shuffle the Array</a>                                 |         <a href="https://github.com/Assertor1290/LeetCode-Solution/blob/master/Easy/src/ShuffleTheArray.java">Java</a>          |
+| 1470  |  <a href="https://leetcode.com/problems/shuffle-the-array/">Shuffle the Array</a>                                 |         <a href="https://github.com/Assertor1290/LeetCode-Solution/blob/master/Easy/src/ShuffleTheArray.java">Java</a>          |
 </pre>
 </pre>

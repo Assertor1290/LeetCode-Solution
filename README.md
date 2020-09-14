@@ -36,4 +36,17 @@ The solutions are in Java currently and a question may have more than one soluti
 |  461  |  <a href="https://leetcode.com/problems/hamming-distance/">Hamming Distance</a>                                  |         <a href="https://github.com/Assertor1290/LeetCode-Solution/blob/master/Easy/src/HammingDistance.java">Java</a>          |
 | 1470  |  <a href="https://leetcode.com/problems/shuffle-the-array/">Shuffle the Array</a>                                 |         <a href="https://github.com/Assertor1290/LeetCode-Solution/blob/master/Easy/src/ShuffleTheArray.java">Java</a>          |
 </pre>
+### Medium
+<pre>
+--------------------------------------------------------------------------------------
+|   #   |                       Title                        |       Solution        |
+--------------------------------------------------------------------------------------
+|   2   |  <a href="https://leetcode.com/problems/add-two-numbers/">Add Two Numbers</a>                                   |         <a href="https://github.com/Assertor1290/LeetCode-Solution/blob/master/Medium/src/AddTwoNumbers.java">Java</a>          |
+</pre>
+### Hard
+<pre>
+--------------------------------------------------------------------------------------
+|   #   |                       Title                        |       Solution        |
+--------------------------------------------------------------------------------------
+|   1   |  <a href="https://leetcode.com/problems/median-of-two-sorted-arrays/">Median Of Two Sorted Arrays</a>                       |         <a href="https://github.com/Assertor1290/LeetCode-Solution/blob/master/Hard/src/MedianTwoSortedArrays.java">Java</a>          |
 </pre>

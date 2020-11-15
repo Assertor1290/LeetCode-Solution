@@ -5,7 +5,7 @@ The solutions are in Java currently and a question may have more than one soluti
 --------------------------------------------------------------------------------------
 |   #   |                       Title                        |       Solution        |
 --------------------------------------------------------------------------------------
-|   1   |  <a href="https://leetcode.com/problems/two-sum/">Two Sum</a>                                           |       <a href="https://github.com/Assertor1290/LeetCode-Solution/blob/master/Easy/src/TwoSum.java">Java</a>            |
+|   1   |  <a href="https://leetcode.com/problems/two-sum/">Two Sum</a>                                           |         <a href="https://github.com/Assertor1290/LeetCode-Solution/blob/master/Easy/src/TwoSum.java">Java</a>          |
 |   7   |  <a href="https://leetcode.com/problems/reverse-integer/">Reverse Integer</a>                                   |         <a href="https://github.com/Assertor1290/LeetCode-Solution/blob/master/Easy/src/ReverseInteger.java">Java</a>          |
 |   9   |  <a href="https://leetcode.com/problems/palindrome-number/">Palindrome Number</a>                                 |         <a href="https://github.com/Assertor1290/LeetCode-Solution/blob/master/Easy/src/PalindromeNumber.java">Java</a>          |
 |  13   |  <a href="https://leetcode.com/problems/roman-to-integer/">Roman 2 Integer</a>                                   |         <a href="https://github.com/Assertor1290/LeetCode-Solution/blob/master/Easy/src/Roman2Integer.java">Java</a>          |

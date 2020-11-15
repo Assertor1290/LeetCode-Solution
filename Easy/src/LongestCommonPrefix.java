@@ -91,8 +91,8 @@ public class LongestCommonPrefix {
      * Method works on Vertical spanning
      * Better in best case scenario than previous method
      * Runtime 0ms Memory 37.3MB
-     * @param str
-     * @return
+     * @param str array of String type
+     * @return longest common prefix
      */
     public String longestCommonPrefix3(String[] str){
         if(str.length==0){
@@ -116,10 +116,42 @@ public class LongestCommonPrefix {
         return str[0];
     }
 
+    /**
+     * Divide and Conquer
+     * In the worst case we have n equal strings with length m
+     * Time:  O(s), s=no of all characters
+     * Space: O(m.log n)
+     * @param str array of String type
+     * @return longest common prefix
+     */
+    public String longestCommonPrefix4(String[] str){
+        if(str==null || str.length==0) return " ";
+            return longestCommonPrefix(str,0, str.length-1);
+    }
+    public String longestCommonPrefix(String[] strs, int l, int r){
+        if(l==r)
+            return strs[l];
+        else {
+            int mid = (l+r)/2;
+            String lcpLeft=longestCommonPrefix(strs,l,mid);
+            String lcpRight=longestCommonPrefix(strs,mid+1,r);
+            return commonPrefix(lcpLeft,lcpRight);
+        }
+    }
+    String commonPrefix(String left, String right){
+        int min=Math.min(left.length(),right.length());
+        for(int i=0;i<min;i++){
+            if(left.charAt(i)!=right.charAt(i))
+                return left.substring(0,i);
+        }
+        return left.substring(0,min);
+    }
+
     public static void main(String[] args) {
         String[] test={"flower","flow","flight"};
         System.out.println(new LongestCommonPrefix().longestCommonPrefix(test));
         System.out.println(new LongestCommonPrefix().longestCommonPrefix2(test));
         System.out.println(new LongestCommonPrefix().longestCommonPrefix3(test));
+        System.out.println(new LongestCommonPrefix().longestCommonPrefix4(test));
     }
 }

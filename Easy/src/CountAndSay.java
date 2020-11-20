@@ -1,3 +1,6 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * <p>
  * Given an integer n where 1 ≤ n ≤ 30, generate the nth term of the count-and-say sequence.
@@ -51,8 +54,37 @@ public class CountAndSay {
         }
         return sb.toString();
     }
+
+    /**
+     * Regular Expression
+     * Time: O(2^n)
+     * @param n
+     * @return
+     */
+    public String countAndSay2(int n) {
+        String currSeq = "1";
+
+        // Pattern to match the repetitive digits
+        String regexPattern = "(.)\\1*";
+        Pattern pattern = Pattern.compile(regexPattern);
+
+        for (int i = 1; i < n; ++i) {
+            Matcher m = pattern.matcher(currSeq);
+            StringBuilder nextSeq = new StringBuilder();
+
+            // each group contains identical and adjacent digits
+            while (m.find()) {
+                nextSeq.append(m.group().length()).append(m.group().charAt(0));
+            }
+            // prepare for the next iteration
+            currSeq = nextSeq.toString();
+        }
+
+        return currSeq;
+    }
     public static void main(String[] args) {
         int n=4;
         System.out.println(new CountAndSay().countAndSay(n));
+        System.out.println(new CountAndSay().countAndSay2(n));
     }
 }

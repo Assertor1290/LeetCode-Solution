@@ -105,10 +105,23 @@ public class ClimbingStairs {
         return second;
     }
 
+    /**
+     * Fibonacci Formula
+     * TC:O(logn)
+     * SC:O(1)
+     * @param n
+     * @return
+     */
+    public int climbStairs5(int n){
+        double sqrt5=Math.sqrt(5);
+        double fibn=Math.pow((1+sqrt5)/2,n+1)-Math.pow((1-sqrt5)/2,n+1);
+        return (int)(fibn/sqrt5);
+    }
     public static void main(String[] args) {
         System.out.println(new ClimbingStairs().climbStairs(5));
         System.out.println(new ClimbingStairs().climbStairs2(5));
         System.out.println(new ClimbingStairs().climbStairs3(5));
         System.out.println(new ClimbingStairs().climbStairs4(5));
+        System.out.println(new ClimbingStairs().climbStairs5(5));
     }
 }

@@ -1,4 +1,15 @@
+/**
+ * <p>
+ *     Given a sorted linked list, delete all duplicates such that each element appear only once.
+ * </p>
+ */
 public class RemoveDuplicatesFromSortedList {
+    /**
+     * TC: O(n)
+     * SC: O(1)
+     * @param head of linked list
+     * @return head of linked list after deleting duplicates
+     */
     public ListNode deleteDuplicates(ListNode head){
         ListNode cur=head;
         while (cur!=null && cur.next!=null){

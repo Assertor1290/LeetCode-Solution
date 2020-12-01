@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 /**
  * <p>
  *      Given an array of size n, find the majority element.
@@ -9,6 +11,9 @@
 public class MajorityElement {
     /**
      * Brute force
+     * The brute force algorithm iterates over the array, and then iterates again
+     * for each number to count its occurrences. As soon as a number is found to have
+     * appeared more than any other can possibly have appeared, return it.
      * TC:O(n^2) SC:O(1)
      * @param nums input array
      * @return majorityElement
@@ -30,8 +35,33 @@ public class MajorityElement {
         return -1;
     }
 
+    /**
+     * HashMap
+     * We can use a HashMap that maps elements to counts in order to count
+     * occurrences in linear time by looping over nums.
+     * Then, we simply return the key with maximum value.
+     * TC:O(n) SC:O(n)
+     * @param nums input array
+     * @return majorityElement
+     */
+    public int majorityElement2(int[] nums) {
+        int ans=0;
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int num : nums) {
+            map.put(num, map.getOrDefault(num, 0) + 1);
+        }
+
+        for(int key:map.keySet()){
+            if(map.get(key)>nums.length/2){
+                ans=key;
+            }
+        }
+        return ans;
+    }
+
     public static void main(String[] args) {
         int[] arr=new int[]{3,2,3};
         System.out.println(new MajorityElement().majorityElement(arr));
+        System.out.println(new MajorityElement().majorityElement2(arr));
     }
 }

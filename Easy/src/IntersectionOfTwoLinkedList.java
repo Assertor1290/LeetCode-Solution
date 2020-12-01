@@ -60,6 +60,43 @@ public class IntersectionOfTwoLinkedList {
         return null;
     }
 
+    /**
+     * Two Pointer
+     *          1. Initialize two pointers ptr1 and ptr2  at the head1 and  head2.
+     *          2. Traverse through the lists,one node at a time.
+     *          3. When ptr1 reaches the end of a list, then redirect it to the head2.
+     *          4. similarly when ptr2 reaches the end of a list, redirect it the head1.
+     *          5. Once both of them go through reassigning,they will be equidistant from
+     *             the collision point
+     *          6. If at any node ptr1 meets ptr2, then it is the intersection node.
+     *          7. After second iteration if there is no intersection node it returns NULL.
+     * @param headA head of first linked list
+     * @param headB head of second linked list
+     * @return null if no intersection node else Intersecting node
+     */
+    public ListNode intersectNode3(ListNode headA, ListNode headB){
+        ListNode temp1 = headA;
+        ListNode temp2 = headB;
+        boolean flag1 = false;
+        boolean flag2 = false;
+        while (temp1 != null && temp2 != null) {
+            if (temp1 == temp2) {
+                return temp1;
+            }
+            temp1 = temp1.next;
+            temp2 = temp2.next;
+            if (temp1 == null && flag1 == false) {
+                flag1 = true;
+                temp1 = headB;
+            }
+            if (temp2 == null && flag2 == false) {
+                flag2 = true;
+                temp2 = headA;
+            }
+        }
+        return null;
+    }
+
     public static void main(String[] args) {
         /**
          *      4 ----- 1 -----
@@ -82,6 +119,10 @@ public class IntersectionOfTwoLinkedList {
         list2.next.next.next=list1.next.next;
 
         ListNode intersect = new IntersectionOfTwoLinkedList().intersectNode(list1,list2);
+        System.out.println(intersect.val);
+        intersect = new IntersectionOfTwoLinkedList().intersectNode2(list1,list2);
+        System.out.println(intersect.val);
+        intersect = new IntersectionOfTwoLinkedList().intersectNode3(list1,list2);
         System.out.println(intersect.val);
     }
 }

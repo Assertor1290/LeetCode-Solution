@@ -62,6 +62,8 @@ public class IntersectionOfTwoLinkedList {
 
     /**
      * Two Pointer
+     * Runtime:1ms, Memory:41.5MB
+     * TC:O(m+n) SC:O(1)
      *          1. Initialize two pointers ptr1 and ptr2  at the head1 and  head2.
      *          2. Traverse through the lists,one node at a time.
      *          3. When ptr1 reaches the end of a list, then redirect it to the head2.

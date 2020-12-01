@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.HashMap;
 
 /**
@@ -59,9 +60,24 @@ public class MajorityElement {
         return ans;
     }
 
+    /**
+     * Sorting
+     *         if element occurs more than n/2 its guaranteed to be a middle element if sorted
+     *         eg 1(0)  .... x(n/2) ......(n)
+     * TC:O(nlogn) SC:O(1)
+     * @param nums input array
+     * @return majorityElement
+     */
+    public int majorityElement3(int[] nums) {
+
+        Arrays.sort(nums);
+        return nums[nums.length/2];
+    }
+
     public static void main(String[] args) {
         int[] arr=new int[]{3,2,3};
         System.out.println(new MajorityElement().majorityElement(arr));
         System.out.println(new MajorityElement().majorityElement2(arr));
+        System.out.println(new MajorityElement().majorityElement3(arr));
     }
 }

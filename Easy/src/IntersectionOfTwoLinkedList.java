@@ -99,6 +99,55 @@ public class IntersectionOfTwoLinkedList {
         return null;
     }
 
+    /**
+     * This solution takes advantage of two rules given in the problem description:
+     *
+     * 1. You may assume there are no cycles anywhere in the entire linked structure.
+     * 2. Each value on each linked list is in the range [1, 10^9].
+     *
+     * Since we can take for granted that all values are positive integers and
+     * that there are no cycles in the linked list, we can:
+     *
+     * 1. go through list A once, negating every value
+     * 2. go through list B once
+     *      2.1 the first node with a negative value is the intersecting node, found the answer
+     *      2.2 there is no node with a negative value in list B there is no intersection
+     * 3. go through list A for a second time, restoring every val to its original value
+     * Runtime:1ms, Memory:41.5MB
+     * TC:O(2*m+n)=O(m+n) SC:O(1)
+     *
+     * @param headA head of first linked list
+     * @param headB head of second linked list
+     * @return null if no intersection node else Intersecting node
+     */
+    public ListNode intersectNode4(ListNode headA, ListNode headB){
+        if (headA == null || headB == null) {
+            return null;
+        }
+        negateAll(headA);
+        ListNode answer = findFirstNegative(headB);
+        negateAll(headA);
+
+        return answer;
+    }
+
+    private void negateAll(ListNode node) {
+        while (node != null) {
+            node.val = -node.val;
+            node = node.next;
+        }
+    }
+
+    private ListNode findFirstNegative(ListNode node) {
+        while (node != null) {
+            if (node.val < 0) {
+                return node;
+            }
+            node = node.next;
+        }
+        return null;
+    }
+
     public static void main(String[] args) {
         /**
          *      4 ----- 1 -----
@@ -125,6 +174,8 @@ public class IntersectionOfTwoLinkedList {
         intersect = new IntersectionOfTwoLinkedList().intersectNode2(list1,list2);
         System.out.println(intersect.val);
         intersect = new IntersectionOfTwoLinkedList().intersectNode3(list1,list2);
+        System.out.println(intersect.val);
+        intersect = new IntersectionOfTwoLinkedList().intersectNode4(list1,list2);
         System.out.println(intersect.val);
     }
 }

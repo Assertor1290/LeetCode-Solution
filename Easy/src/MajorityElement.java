@@ -74,10 +74,40 @@ public class MajorityElement {
         return nums[nums.length/2];
     }
 
+    /**
+     * Boyer-Moore Voting Algorithm
+     * Start by assuming that the first element of the array is the majority element.
+     * Have a counter variable to count its frequency. As you traverse through the array,
+     * if the current element of the array is same as the majority element,
+     * increment the counter variable and move ahead.
+     * If the current element is not same as the majority element,
+     * you need to nullify one vote of the majority element.
+     * So, decrement the counter variable if the counter is not already 0.
+     * If the counter is zero, reset the majority element to the current element
+     * and increment the counter. You will end up with the majority element once the iteration is done.
+     * TC:O(n) SC:O(1)
+     * @param nums input array
+     * @return majorityElement
+     */
+    public int majorityElement4(int[] nums) {
+        int count = 0;
+        int candidate = 0;
+
+        for (int num : nums) {
+            if (count == 0) {
+                candidate = num;
+            }
+            count += (num == candidate) ? 1 : -1;
+        }
+
+        return candidate;
+    }
+
     public static void main(String[] args) {
         int[] arr=new int[]{3,2,3};
         System.out.println(new MajorityElement().majorityElement(arr));
         System.out.println(new MajorityElement().majorityElement2(arr));
         System.out.println(new MajorityElement().majorityElement3(arr));
+        System.out.println(new MajorityElement().majorityElement4(arr));
     }
 }

@@ -14,6 +14,8 @@ public class ReverseBits {
         return Integer.reverse(n);
     }
 
+    //To understand the following two approaches, refer to the link
+    //https://www.youtube.com/watch?v=-5z9dimxxmI&feature=youtu.be
     /**
      * TC:O(32)=O(1), SC:O(!1)
      * @param n input 32 bit number

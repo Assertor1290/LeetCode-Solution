@@ -22,8 +22,10 @@ public class NumberOfOneBits {
      */
     public int hammingWeight(int n){
         int mask=1;
-        int bits=1;
+        int bits=0;
         for(int i=0;i<32;i++){
+            //checking if bit is 1 or 0.
+            //1&1=1 0&1=0
             if((n & mask)!=0){
                 bits++;
             }
@@ -31,9 +33,29 @@ public class NumberOfOneBits {
         }
         return bits;
     }
-    
+
+    /**
+     * Instead of checking every bit of the number, we repeatedly flip the least-significant
+     * 1-bit of the number to 0, and add 1 to the sum. As soon as the number becomes 0,
+     * we know that it does not have any more 1-bits, and we return the sum.
+     *
+     * The key idea here is to realize that for any number n, doing a bit-wise AND of n and n - 1
+     * flips the least-significant 1-bit in n to 0.
+     * @param n input number
+     * @return number  of 1 bits
+     */
+    public int hammingWeight2(int n){
+        int sum=0;
+        while (n!=0){
+            sum++;
+            n &= n-1;
+        }
+        return sum;
+    }
+
     public static void main(String[] args) {
         int n=11;
         System.out.println(new NumberOfOneBits().hammingWeight(n));
+        System.out.println(new NumberOfOneBits().hammingWeight2(n));
     }
 }

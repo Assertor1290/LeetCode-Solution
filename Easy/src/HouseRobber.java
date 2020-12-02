@@ -1,3 +1,5 @@
+
+
 /**
  * <p>
  *      You are a professional robber planning to rob houses along a street.
@@ -11,12 +13,32 @@
  */
 public class HouseRobber {
     /**
-     *
+     * Dynamic Programming Solution: Bottom Up
+     * Basically, we need to find maximum amount we can rob at ith point
      * @param nums input array
      * @return maximum amount you can rob
      */
     public int rob(int[] nums){
+        //If there are zero houses, return 0
+        if(nums.length==0)
+            return 0;
 
+        //If there is only one house, can rob that house only
+        if(nums.length==1)
+            return nums[0];
+
+        //If there are two houses, rob the house with more money
+        if(nums.length==2)
+            return Math.max(nums[0],nums[1]);
+
+        //Dp array: dp[i] represents the maximum amount we can rob upto point i
+        int[] dp=new int[nums.length];
+        dp[0]=nums[0];
+        dp[1]=Math.max(nums[0],nums[1]);
+        for(int i=2;i<dp.length;i++){
+            dp[i]=Math.max(nums[i]+dp[i-2],dp[i-1]);
+        }
+        return dp[nums.length-1];
     }
 
     public static void main(String[] args) {

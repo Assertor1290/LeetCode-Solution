@@ -16,7 +16,7 @@ public class NumberOfOneBits {
      * Clearly, a logical AND between any number and the mask 1
      * gives us the least significant bit of this number.
      * To check the next bit, we shift the mask to the left by one.
-     * TC:O(1):However as number of bits increases, time increases. SC:O(1)
+     * TC:O(1) SC:O(1)
      * @param n input number
      * @return number  of 1 bits
      */
@@ -41,6 +41,7 @@ public class NumberOfOneBits {
      *
      * The key idea here is to realize that for any number n, doing a bit-wise AND of n and n - 1
      * flips the least-significant 1-bit in n to 0.
+     * TC:O(1) SC:O(1)
      * @param n input number
      * @return number  of 1 bits
      */

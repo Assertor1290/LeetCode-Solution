@@ -35,7 +35,7 @@ public class CountPrimes {
 
         //Keep checking until square of number is less than n
         for(int i=2;i*i<n;i++){
-            //if prime[i] is true, that is number is not ms
+            //if prime[i] is true, that number is prime
             if(prime[i]){
                 //mark the square of number and its multiples from there as composite
                 for(int j=i*i;j<n;j+=i)

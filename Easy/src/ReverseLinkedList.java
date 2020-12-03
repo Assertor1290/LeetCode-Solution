@@ -52,6 +52,33 @@ public class ReverseLinkedList {
         }
     }
 
+    /**
+     * Recursive
+     * Assume that the rest of the list had already been reversed, now how do I reverse the front part?
+     * Let's assume the list is:
+     *      n1 → … → nk-1 → nk → nk+1 → … → nm → Ø
+     *
+     * Assume from node nk+1 to nm had been reversed and you are at node nk.
+     *      n1 → … → nk-1 → nk → nk+1 ← … ← nm
+     *
+     * We want nk+1’s next node to point to nk. So,
+     *      nk.next.next = nk;
+     *
+     * Be very careful that n1's next must point to Ø. If you forget about this,
+     * your linked list has a cycle in it. This bug could be caught if you test
+     * your code with a linked list of size 2.
+     * TC:O(n) SC:O(n)
+     * @param head of linked list
+     * @return head of Linked List
+     */
+    public ListNode reverseList2(ListNode head){
+        if (head == null || head.next == null) return head;
+        ListNode p = reverseList(head.next);
+        head.next.next = head;
+        head.next = null;
+        return p;
+    }
+
     public static void main(String[] args) {
         ListNode head=new ListNode(1);
         ListNode second=new ListNode(2);

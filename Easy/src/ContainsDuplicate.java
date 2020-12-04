@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.HashSet;
 
 /**
  * <p>
@@ -37,9 +38,28 @@ public class ContainsDuplicate {
         return false;
     }
 
+    /**
+     * HashSet
+     * TC:O(n) SC:O(n)
+     * @param nums input array
+     * @return true if duplicates present else false
+     */
+    public boolean containsDuplicate3(int[] nums){
+        HashSet<Integer> hmap=new HashSet<>();
+        for(int num:nums){
+            if(!hmap.contains(num)){
+                hmap.add(num);
+            }
+            else
+                return true;
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
         int[] arr=new int[]{1,2,3,1};
         System.out.println(new ContainsDuplicate().containsDuplicate(arr));
         System.out.println(new ContainsDuplicate().containsDuplicate2(arr));
+        System.out.println(new ContainsDuplicate().containsDuplicate3(arr));
     }
 }

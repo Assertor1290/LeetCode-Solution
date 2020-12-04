@@ -67,8 +67,30 @@ public class IsoMorphicStrings {
         }
         return true;
     }
+
+    /**
+     * Runtime:2ms Memory:38.9MB
+     * @param s first string
+     * @param t second string
+     * @return true if isomorphic, else false
+     */
+    public boolean isIsomorphic2(String s, String t) {
+        int[] x = new int[256];
+        int[] y = new int[256];
+        char[] s1 = s.toCharArray();
+        char[] t1 = t.toCharArray();
+        for(int i = 0;i<s1.length;i++){
+            if(x[s1[i]] != y[t1[i]])
+                return false;
+            x[s1[i]] = i+1;
+            y[t1[i]] = i+1;
+        }
+        return true;
+    }
+
     public static void main (String[]args){
         String s = "egg", t = "add";
         System.out.println(new IsoMorphicStrings().isIsomorphic(s, t));
+        System.out.println(new IsoMorphicStrings().isIsomorphic2(s, t));
     }
 }

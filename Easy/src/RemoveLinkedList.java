@@ -1,6 +1,6 @@
 /**
  * <p>
- *
+ *      Remove all elements from a linked list of integers that have value val.
  * </p>
  */
 public class RemoveLinkedList {
@@ -12,6 +12,12 @@ public class RemoveLinkedList {
       }
     }
 
+    /**
+     * Runtime:0ms, Memory:39.8MB
+     * @param head of linked list
+     * @param val to be removed
+     * @return head of Linked List
+     */
     public ListNode removeElements(ListNode head, int val) {
         // Set pointers.
         ListNode current, prev;

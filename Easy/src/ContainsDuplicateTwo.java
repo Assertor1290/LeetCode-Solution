@@ -10,7 +10,6 @@ import java.util.HashMap;
 public class ContainsDuplicateTwo {
 
     /**
-     *
      * @param nums input array
      * @param k atmost difference between index
      * @return true if duplicate is within k indexes
